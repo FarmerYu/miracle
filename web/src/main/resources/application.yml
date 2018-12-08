@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    cache: false
+
+mybatis:
+    type-aliases-package: com.miracle.web.domain
+    mapper-locations: classpath:mapper/*.xml
+    configuration:
+      default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+
+
+mapper:
+    mappers:
+        - com.miracle.web.utils.BaseMapper
+    not-empty: false
+    identity: MYSQL
+    enum-as-simple-type: true
+    wrap-keyword: '`{0}`'
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+druid:
+  initial-size: 1
+  min-idle: 1
+  max-active: 20
+  test-on-borrow: true

@@ -1,0 +1,36 @@
+.login-area{width:900px;margin:0 auto;}
+*{box-sizing: border-box;}
+img{width:100%;display:block;}
+.left{float:left;}
+.right{float:right;}
+body{
+	background:#f5f5f5;
+}
+/*忘记密码*/
+.login-header{height:86px;margin-top:20px;line-height:86px;color:#8d8d8d;letter-spacing:2px;}
+a{color:#d7532e;}
+.forgetBox{width:100%;}
+.forget-title{width:100%;font-size:24px;height:72px;color:#fff;line-height:72px;text-align:center;background:#d7532e;}
+.user_register_checkbox{width:16px;height:16px;float:left;margin-right:6px;border:1px solid #b2b2b2;border-radius:2px;}
+.user_login_checkbox{width:16px !important;height:16px;float:left;margin-right:6px;border:1px solid #b2b2b2;border-radius:2px;}
+.form{background:#fff;padding:40px 145px;margin-bottom: 20px;}
+.form input{border:1px solid #bdbdbd;color:#333;width:100%;height:50px;border-radius:4px;padding-left:15px;line-height:50px;}
+.number{margin-bottom:20px;height:50px;}
+#yzmBox .yzm{width:360px;float:left;}
+#yzmBox span,#login_btn{border:0;float:right;width:200px;border-radius:4px;background:#d7532e;color:#fff;text-align:center;line-height:50px;}
+#login_btn{float:inherit;width:100%;font-size:14px;margin:10px 0;}
+.el{letter-spacing:2px;}
+#error{color:red;}
+.login-area .info{color:#8d8d8d;text-align: center;line-height: 1.8;}
+/*注册样式*/
+.userCenter-tab{height:20px;font-size:14px;color:#626262;margin-bottom:20px;}
+.userCenter-tab span{line-height:20px;margin-right:30px;position:relative;padding-left:26px;}
+.userCenter-tab span i{position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;border:1px solid #bdbdbd;}
+.userCenter-tab-selected i::before{content:"";position:absolute;left:3px;top:3px;width:10px;height:10px;background:#d7532e;border-radius:50%;}
+.xieyi{height:16px;line-height:16px;color:#626262;font-size:14px;margin-bottom:30px;}
+#user_register_remind{width:16px;height:16px;float:left;margin-right:6px;border:1px solid #b2b2b2;border-radius:2px;-webkit-appearance:checkbox;}
+#user_login_remind{width:16px;height:16px;float:left;margin-right:6px;border:1px solid #b2b2b2;border-radius:2px;-webkit-appearance:checkbox;}
+#yzmBox span,#user_register_btn{border:0;float:right;width:200px;border-radius:4px;background:#d7532e;color:#fff;text-align:center;line-height:50px;}
+#user_register_btn{float:inherit;width:100%;font-size:14px;margin:10px 0;}
+#yzmBox span,#user_forget_btn{border:0;float:right;width:200px;border-radius:4px;background:#d7532e;color:#fff;text-align:center;line-height:50px;}
+#user_forget_btn{float:inherit;width:100%;font-size:14px;margin:10px 0;}

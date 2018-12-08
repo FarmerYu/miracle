@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="page(pageNum,pageSize,total)">
+    <div th:if="${total==0}">
+        <h2>无数据</h2>
+    </div>
+    <div th:if="${total>0}">
+        <div class="page-container" th:include="::page-content"></div>
+
+        <ul class="pagination" id="pagination"></ul>
+        <script th:inline="javascript">
+            $(function () {
+                $('#pagination').jqPaginator({
+                    totalCounts: /*[[${total}]]*/ 100, //设置分页的总条目数
+                    pageSize: /*[[${pageSize}]]*/ 10, //设置每一页的条目数
+                    visiblePages: 8,
+                    currentPage: /*[[${pageNum}]]*/ 1,
+                    first: '<li class="first"><a href="javascript:void(0);">首页</a></li>', // 首页的HTML样式
+                    prev: '<li class="prev"><a href="javascript:void(0);"><</a></li>', // 上一页的HTML样式
+                    next: '<li class="next"><a href="javascript:void(0);">></a></li>', // 下一页的HTML样式
+                    last: '<li class="last"><a href="javascript:void(0);">末页</a></li>', // 最后一页的样式
+                    page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>', // 当前页样式
+                    onPageChange: function (num, type) { // 点页码的回调
+
+                        if (type != 'change') return;
+
+                        var reg = /pageNum=[\d]+/;
+                        if (reg.test(self.location.href)) {
+                            self.location = self.location.href.replace(reg, 'pageNum=' + num);
+                        } else if (self.location.search == '') {
+                            self.location = self.location.href + '?pageNum=' + num;
+                        } else {
+                            self.location = self.location.href + '&pageNum=' + num;
+                        }
+                    }
+                });
+            })
+        </script>
+    </div>
+</div>
+
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/layout(title='个人中心')">
+<div th:fragment="head">
+
+</div>
+<div th:fragment="content">
+    <div class="case clearfix area">
+        <div class="case-l left">
+            <ul class="center-menu">
+                <li>
+                    <h3>用户中心</h3>
+                    <a href="javascript:void(0)">个人资料</a>
+                    <a href="javascript:void(0)">组织管理</a>
+                    <a href="javascript:void(0)">资金管理</a>
+                    <a href="javascript:void(0)">账户管理</a>
+                </li>
+                <li>
+                    <h3>订单管理</h3>
+                    <a href="javascript:void(0)">我的购物车</a>
+                    <a href="javascript:void(0)" th:href="@{'/order/index?status=0'}">我的订单</a>
+                    <a href="javascript:void(0)">交易记录</a>
+                    <a href="javascript:void(0)">数据统计</a>
+                </li>
+                <li>
+                    <h3>雇主管理</h3>
+                    <a href="javascript:void(0)">雇主访问记录</a>
+                    <a href="javascript:void(0)">合作的服务商</a>
+                </li>
+                <li>
+                    <h3>消息中心</h3>
+                    <a href="javascript:void(0)" th:href="@{'/message/index?isRead=0'}">未读消息</a>
+                    <a href="javascript:void(0)" th:href="@{'/message/index?isRead=1'}">已读消息</a>
+                </li>
+            </ul>
+            <script th:inline="javascript">
+                $(function () {
+                    var selectedMenuName = /*[[${center_nav}]]*/ "个人资料";
+                    $(".center-menu li a.active").removeClass("active");
+                    $(".center-menu li a:contains('" + selectedMenuName + "')").addClass("active");
+                })
+            </script>
+    </div>
+
+    <div class="case-r right">
+        <div class="pageSlider"><a href="javascript:void(0)">我是雇主</a>><span th:text="${center_nav}"></span></div>
+        <div class="center-container" th:include="::center-content"></div>
+    </div>
+</div>
+    <link rel="stylesheet" type="text/css" href="/css/my.css" th:src="@{/css/my.css}"/>
+</div>
+
+</html>

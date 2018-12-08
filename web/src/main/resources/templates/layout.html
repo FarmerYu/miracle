@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- common styles and scripts -->
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" th:href="@{/css/reset.css}" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" th:href="@{/css/jquery.bxslider.css}" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" th:href="@{/css/index.css}" /> 
+    <link rel="stylesheet" type="text/css" href="css/tinyImgUpload.css" th:href="@{/css/tinyImgUpload.css}" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{/css/style.css}" />-->
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js" th:src="@{/js/jquery-2.2.3.min.js}"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.js" th:src="@{/js/jquery.bxslider.js}"></script>
+    <script type="text/javascript" src="js/jquery.downCount.js" th:src="@{/js/jquery.downCount.js}"></script>
+    <script type="text/javascript" src="js/jqPaginator.min.js" th:src="@{/js/jqPaginator.min.js}"></script>
+    <!-- <script type="text/javascript" src="js/myStorage.js" th:src="@{/js/myStorage.js}"></script>
+    <script type="text/javascript" src="js/common.js" th:src="@{/js/common.js}"></script>
+    <script type="text/javascript" src="js/index.js" th:src="@{/js/index.js}"></script> -->
+
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+        ctxPath = /*[[@{/}]]*/ '';
+        var loginUser = '' /*[[${session.user}]]*/ ;
+        /*]]>*/
+    </script>
+</head>
+
+<body>
+    <div class="header" th:fragment="header">
+        <div class="header-t">
+            <div class="area header-t-con">
+                <p class="left">欢迎来到奇迹活动首页!</p>
+                <div class="right">
+                    <span>我的购物车(<i>0</i>)</span>
+                    <span>服务电话：010-57158847</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-c area">
+            <div class="logo left"><img th:src="@{/img/logo.png}" /></div>
+            <div class="searchBox left">
+                <input class="left" type="text" name="search_input" id="search_input" placeholder="请输入关键字" />
+                <span class="head-btn left">搜索</span>
+            </div>
+            <a class="publish-btn head-btn right" href="publishXQ">发布</a>
+        </div>
+        <div class="navBox">
+            <ul class="nav area">
+                <li class="nav-selected"><a href="index">首页</a></li>
+                <li><a href="require">企业需求</a></li>
+                <li><a href="service">服务资源</a></li>
+                <li><a href="service_providers">服务商</a></li>
+                <li><a href="javascript:void(0);">个人中心</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container" th:include="::content"></div>
+
+    <div class="footer">
+        <div class="area footerNav">
+            <h5>联系我们</h5>
+            <ul class="footer-address">
+                <li>
+                    <p><i class="ftIcon1"></i>公司电话：010-57158847</p>
+                    <p><i class="ftIcon2"></i>商务合作电话：18811078860</p>
+                    <p><i class="ftIcon3"></i>邮箱：qijihuodong@163.com</p>
+                </li>
+                <li>
+                    <p><i class="ftIcon4"></i>公司地址：北京市昌平区国风美唐综合楼2号楼408</p>
+                    <p><i class="ftIcon5"></i>微信客服：dcqj101</p>
+                </li>
+            </ul>
+            <div class="erweimaBox">
+                <span class="erweima"><img src="/img/erweima.png" th:src="@{/img/erweima.png}" /></span>
+                <p>奇迹活动微信公众号</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

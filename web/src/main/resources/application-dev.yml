@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.93.122.157:3306/qiji?autoReconnect=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 6Qu5v7@NmERuaOAC
+    type: com.alibaba.druid.pool.DruidDataSource
+  thymeleaf:
+    cache: false
+
+logging:
+  level:
+    tk.mybatis: debug
+    com.miracle.ui.mapper: debug
+

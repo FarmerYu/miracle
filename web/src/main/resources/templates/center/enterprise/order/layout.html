@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/center/layout(center_nav='我的订单')">
+<div th:fragment="center-content">
+    <div class="cooperative-employer">
+        <div class="order-status">
+            <h4 class="staSelected"><a th:href="@{/order/index?t=0&&status=1}">全部订单</a></h4>
+            <h4><a th:href="@{/order/index?t=1&&status=0}">我发布的</a></h4>
+            <h4><a th:href="@{/order/index?t=2&&status=0}">待付款的</a></h4>
+            <h4><a th:href="@{/order/index?t=3&&status=0}">进行中的</a></h4>
+            <h4><a th:href="@{/order/index?t=4&&status=0}">待评价的</a></a></h4>
+            <h4><a th:href="@{/order/index?t=5&&status=0}">我的评价</a></h4>
+            <h4><a th:href="@{/order/invoice?t=6}">我的发票</a></h4>
+            <h4><a th:href="@{/order/index?t=7&&status=0}">效果报告</a></h4>
+        </div>
+        <div class="order-content" th:include="::order-content">
+
+        </div>
+    </div>
+    <script th:inline="javascript">
+        $(function () {
+            var selectedMenuName = /*[[${#request.getParameter('t')}]]*/ 0;
+            $(".order-status h4.staSelected").removeClass("staSelected");
+            $(".order-status h4").eq(selectedMenuName).addClass("staSelected");
+        })
+    </script>
+</div>
+
+</html>
