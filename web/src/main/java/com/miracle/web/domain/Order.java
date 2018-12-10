@@ -1,14 +1,19 @@
 package com.miracle.web.domain;
 
+import com.miracle.web.domain.value.OrderInvoiceStatus;
+import com.miracle.web.domain.value.OrderPayStatus;
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-public class MicroOrder {
+@Table(name = "micro_order")
+public class Order {
     @Id
     private Integer id;
 
@@ -17,17 +22,17 @@ public class MicroOrder {
     private Integer buyUid;
 
     @Transient
-    private MicroEnterprise buyer;
+    private Enterprise buyer;
 
     private Integer sellUid;
 
     @Transient
-    private MicroProvider seller;
+    private Provider seller;
 
     private Integer serviceId;
 
     @Transient
-    private MicroService service;
+    private Service service;
 
     private Integer standardId;
 //todo
@@ -40,7 +45,6 @@ public class MicroOrder {
 
     private Date addTime;
 
-    private MicroOrderPayStatus status;
 
 
     private String taobaoTradeNo;
@@ -48,8 +52,6 @@ public class MicroOrder {
     private Byte tradeStatus;
 
     private String weixinTradeNo;
-
-
 
     private String requirement;
 
@@ -65,4 +67,10 @@ public class MicroOrder {
     private String commentAttach;
 
     private Byte order;
+
+
+
+    private OrderInvoiceStatus invoiceStatus;
+    @Column(name = "status")
+    private OrderPayStatus payStatus;
 }

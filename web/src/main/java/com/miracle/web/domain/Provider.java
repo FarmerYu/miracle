@@ -1,5 +1,6 @@
 package com.miracle.web.domain;
 
+import com.miracle.web.domain.value.OrganizationType;
 import lombok.Data;
 
 import javax.persistence.Table;
@@ -10,7 +11,7 @@ import java.util.Date;
  */
 @Data
 @Table(name="micro_auth_orgnise")
-public class MicroProvider extends MicroOrganization {
+public class Provider extends Organization {
 
     private String type;
 
@@ -43,7 +44,7 @@ public class MicroProvider extends MicroOrganization {
     private String intro;
 
     @Override
-    protected Type getOrganizationType() {
-        return Type.Provider;
+    protected OrganizationType getOrganizationType() {
+        return OrganizationType.Provider;
     }
 }

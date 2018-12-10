@@ -8,11 +8,11 @@ import javax.persistence.Id;
 订单相关的额外信息基类
  */
 @Data
-public class MicroOrderExtra {
+public class OrderExtra {
     @Id
     private Integer id;
     private Integer orderId;
-    private MicroOrder order;
+    private Order order;
 
     private Integer buyUid;
     private Integer sellUid;

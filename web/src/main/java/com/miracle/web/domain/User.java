@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 @Table(name = "micro_users")
-public class MicroUser {
+public class User {
     @Id
     private Integer uid;
 

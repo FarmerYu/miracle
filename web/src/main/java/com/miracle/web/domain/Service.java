@@ -3,11 +3,13 @@ package com.miracle.web.domain;
 import lombok.Data;
 
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;
 
 @Data
-public class MicroService {
+@Table(name = "micro_service")
+public class Service {
     @Id
     private Integer id;
     private Integer uid;

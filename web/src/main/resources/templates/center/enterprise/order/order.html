@@ -30,7 +30,7 @@
                         <p class="orderInfo-item3" th:text="${o.service.address}">昆明</p>
                         <p class="orderInfo-item4" th:text="${o.price}">6000</p>
                         <p class="orderInfo-item5" th:text="${#dates.format(o.service.endTime, 'yyyy.MM.dd')}">2017.11.11</p>
-                        <p class="orderInfo-item6" th:class="${o.status.code==0? 'orderInfo-item6 waitPay':'orderInfo-item6'}" th:text="${o.status.description}">已抢单</p>
+                        <p class="orderInfo-item6" th:class="${o.payStatus.code==0? 'orderInfo-item6 waitPay':'orderInfo-item6'}" th:text="${o.payStatus.description}">已抢单</p>
                     </div>
                 </div>
             </div>

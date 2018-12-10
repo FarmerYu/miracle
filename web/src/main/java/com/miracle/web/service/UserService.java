@@ -1,19 +1,19 @@
 package com.miracle.web.service;
 
-import com.miracle.web.domain.MicroUser;
-import com.miracle.web.mapper.MicroUserMapper;
+import com.miracle.web.domain.User;
+import com.miracle.web.mapper.UserMapper;
 import com.miracle.web.utils.BaseMapper;
 import com.miracle.web.utils.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MicroUserService extends BaseService<MicroUser> {
+public class UserService extends BaseService<User> {
     @Autowired
-    MicroUserMapper microUserMapper;
+    UserMapper userMapper;
 
     @Override
-    protected BaseMapper<MicroUser> getMapper() {
-        return microUserMapper;
+    protected BaseMapper<User> getMapper() {
+        return userMapper;
     }
 }

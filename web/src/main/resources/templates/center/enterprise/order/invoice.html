@@ -3,19 +3,18 @@
 <div th:fragment="order-content">
     <div th:replace="/common/pagination::page(${page.pageNum},${page.pageSize},${page.total})">
         <div th:fragment="page-content">
-            <div class="cooperative-list" th:each="inv,iterStat:${page}">
+            <div class="cooperative-list" th:each="order,iterStat:${page}">
                 <div class="cooperative-item" >
                     <div class="cooperative-item-title">
                         <span class="cit-t" th:text="${(iterStat.index+1)+(page.pageNum-1)*page.pageSize+'.'}">1</span>
-                        <span class="cit-t" th:text="${#dates.format(inv.order.addTime, 'yyyy.MM.dd')}">2017.10.9</span>
-                        <p class="cit-t">订单编号：<span  th:text="${inv.order.tradeNo}">15241525225545221522</span></p>
+                        <span class="cit-t" th:text="${#dates.format(order.addTime, 'yyyy.MM.dd')}">2017.10.9</span>
+                        <p class="cit-t">订单编号：<span  th:text="${order.tradeNo}">15241525225545221522</span></p>
                     </div>
                     <div class="cooperative-item-con order-item-con">
-                        <div class="order-item-img"><img th:src="${inv.order.service.pictureUrl}" src="img/11.png"/></div>
+                        <div class="order-item-img"><img th:src="${order.service.pictureUrl}" src="img/11.png"/></div>
                         <div class="order-item-text">
-                            <p th:text="${inv.order.service.title}">需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
-                            <span>发票状态:<i th:if="${inv.status==1}">已开</i>
-                                <i class="wait" th:if="${inv.status==0}">未开</i>
+                            <p th:text="${order.service.title}">需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
+                            <span>发票状态:<i th:class="${order.invoiceStatus.code==0? 'wait':''}" th:text="${order.invoiceStatus.description}">已开</i>
                             </span>
                         </div>
                       </div>

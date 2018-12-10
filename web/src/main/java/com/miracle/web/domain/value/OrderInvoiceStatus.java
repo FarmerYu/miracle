@@ -1,11 +1,10 @@
-package com.miracle.web.domain;
+package com.miracle.web.domain.value;
 
 import lombok.Getter;
 
-public enum MicroOrderPayStatus {
-    Paying(0,"待付款"),
-    Paid(1,"支付成功"),
-    Canceled(-1,"已取消");
+public enum OrderInvoiceStatus {
+    Paying(0,"未开"),
+    Paid(1,"已开");
 
     @Getter
     private String description;
@@ -14,13 +13,13 @@ public enum MicroOrderPayStatus {
     private int code;
 
 
-    private MicroOrderPayStatus(int code,String description){
+    private OrderInvoiceStatus(int code, String description){
         this.description=description;
         this.code=code;
     }
 
-    public static MicroOrderPayStatus valueOf(int code){
-        for (MicroOrderPayStatus value : MicroOrderPayStatus.values()) {
+    public static OrderInvoiceStatus valueOf(int code){
+        for (OrderInvoiceStatus value : OrderInvoiceStatus.values()) {
             if(value.getCode()==code) return  value;
         }
         return null;
