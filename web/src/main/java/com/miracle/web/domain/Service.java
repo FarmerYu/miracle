@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -14,6 +15,8 @@ public class Service {
     private Integer id;
     private Integer uid;
     private Integer utype;
+    private Integer ogid;
+    private Provider provider;
 
     @Transient
     private String title="测试";
@@ -25,4 +28,6 @@ public class Service {
     private String address="测试";
     @Transient
     private Date endTime=new Date();
+    @Transient
+    private BigDecimal price=new BigDecimal(900);
 }

@@ -73,4 +73,5 @@ public class Order {
     private OrderInvoiceStatus invoiceStatus;
     @Column(name = "status")
     private OrderPayStatus payStatus;
+
 }

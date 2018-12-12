@@ -5,7 +5,9 @@ import lombok.Getter;
 public enum OrderPayStatus {
     Paying(0,"待付款"),
     Paid(1,"支付成功"),
-    Canceled(-1,"已取消");
+    Canceled(-1,"已取消"),
+    Commenting(2,"待评价"),
+    Commented(3,"已评价");
 
     @Getter
     private String description;

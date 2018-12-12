@@ -13,7 +13,7 @@ public abstract class Organization {
     private Integer id;
     private Integer uid;
     private User owner;
-    private Integer name;
+    private String name;
 
     protected abstract OrganizationType getOrganizationType();
 

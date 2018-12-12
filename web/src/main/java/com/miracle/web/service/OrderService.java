@@ -1,7 +1,9 @@
 package com.miracle.web.service;
 
-import com.miracle.web.domain.*;
-import com.miracle.web.domain.value.OrganizationType;
+import com.miracle.web.domain.Enterprise;
+import com.miracle.web.domain.Order;
+import com.miracle.web.domain.Provider;
+import com.miracle.web.domain.Service;
 import com.miracle.web.mapper.OrderMapper;
 import com.miracle.web.utils.BaseMapper;
 import com.miracle.web.utils.BaseService;
@@ -18,6 +20,8 @@ public class OrderService extends BaseService<Order> {
     OrganizationService organizationService;
     @Autowired
     ServiceService serviceService;
+    @Autowired ProviderService providerService;
+    @Autowired EnterpriseService enterpriseService;
 
     @Override
     protected BaseMapper<Order> getMapper() {
@@ -25,15 +29,15 @@ public class OrderService extends BaseService<Order> {
     }
 
     @Override
-    protected void fillAssociationProperty(Order entity){
-        if(entity==null) return;
+    protected void fillAssociationProperty(Order order){
+        if(order==null) return;
 
-        val service= serviceService.selectByPrimaryKey(entity.getServiceId());
-        val provider=(Provider) organizationService.selectByUid(entity.getSellUid(), OrganizationType.Provider) ;
-        val enterprise=(Enterprise) organizationService.selectByUid(entity.getBuyUid(), OrganizationType.Enterprise);
+        val service= serviceService.selectByPrimaryKey(order.getServiceId());
+        val enterprise=enterpriseService.selectByUid(order.getBuyUid());
 
-        entity.setBuyer(NullSafe.ensureNotNull(enterprise, Enterprise.class));
-        entity.setSeller(NullSafe.ensureNotNull(provider, Provider.class));
-        entity.setService(NullSafe.ensureNotNull(service, Service.class));
+        order.setService(NullSafe.ensureNotNull(service, Service.class));
+        order.setBuyer(NullSafe.ensureNotNull(enterprise, Enterprise.class));
+        order.setSeller(NullSafe.ensureNotNull(order.getService().getProvider(),Provider.class));
+
     }
 }

@@ -1,6 +1,11 @@
 package com.miracle.web.utils;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.miracle.web.domain.Order;
 import lombok.val;
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.weekend.WeekendSqls;
 
 import java.util.List;
 
@@ -27,6 +32,12 @@ public abstract class BaseService<TEntity> {
         fillAssociationProperty(list);
 
         return list;
+    }
+
+    public Page pageByExample(Object example,int pageNum, short pageSize){
+        val page = PageHelper.startPage(pageNum, pageSize).doSelectPage(() -> this.selectByExample(example));
+
+        return page;
     }
 
     protected void fillAssociationProperty(List<TEntity> list) {

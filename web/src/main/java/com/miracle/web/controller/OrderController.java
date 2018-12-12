@@ -1,10 +1,10 @@
 package com.miracle.web.controller;
 
-import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.Page;
 import com.miracle.web.domain.Order;
 import com.miracle.web.domain.value.OrderPayStatus;
-import com.miracle.web.service.OrderInvoiceService;
 import com.miracle.web.service.OrderService;
+import com.miracle.web.utils.WeekendSqlsProxy;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,51 +21,32 @@ public class OrderController extends CenterController {
 
     @Autowired
     OrderService orderService;
-    @Autowired
-    OrderInvoiceService orderInvoiceService;
 
     @RequestMapping("/index")
-    public ModelAndView index(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "0") Integer status) {
-        val example = Example.builder(Order.class)
-                .where(WeekendSqls.<Order>custom()
-                                .andEqualTo(Order::getPayStatus, OrderPayStatus.valueOf(status))
-                        //.andEqualTo(Order::getBuyUid,currentUser().getUid())
-                )
-                .orderByDesc("id")
-                .build();
+    public ModelAndView index(@RequestParam(defaultValue = "1") int pageNum
+            , @RequestParam(name = "ps", required = false) Integer payStatus
+            , @RequestParam(name = "cs", required = false) Integer commentStatus
+            , @RequestParam(name = "is", required = false) Integer invoiceStatus) {
+        val weekendSqls = WeekendSqlsProxy.<Order>custom()
+                .andEqualTo(Order::getBuyUid, currentUser().getUid())
+                .andEqualTo(Order::getPayStatus, payStatus == null ? null : OrderPayStatus.valueOf(payStatus))
+                .andEqualTo(Order::getInvoiceStatus, invoiceStatus == null ? null : invoiceStatus)
+                .andIsNullOrNot(Order::getComment, commentStatus == null ? null : commentStatus == 0)
+                .weekendSqls();
 
-        val page = PageHelper.startPage(pageNum, PAGE_SIZE).doSelectPage(() -> orderService.selectByExample(example));
+        val page = doSelectPage(pageNum, weekendSqls);
 
-        return new ModelAndView("center/enterprise/order/order", "page", page);
+        return new ModelAndView("center/enterprise/order", "page", page);
     }
 
-    @RequestMapping("/invoice")
-    public ModelAndView invoice(@RequestParam(defaultValue = "1") Integer pageNum) {
+    private Page doSelectPage(Integer pageNum, WeekendSqls<Order> weekendSqls) {
         val example = Example.builder(Order.class)
-                .where(WeekendSqls.<Order>custom()
-                                .andEqualTo(Order::getPayStatus, OrderPayStatus.Paid.getCode())
-                        //.andEqualTo(Order::getBuyUid,currentUser().getUid())
-                )
+                .where(weekendSqls)
                 .orderByDesc("id")
                 .build();
 
-        val page = PageHelper.startPage(pageNum, PAGE_SIZE).doSelectPage(() -> orderService.selectByExample(example));
+        val page = orderService.pageByExample(example, pageNum, PAGE_SIZE);
 
-        return new ModelAndView("center/enterprise/order/invoice", "page", page);
-    }
-
-    @RequestMapping("/comment")
-    public ModelAndView comment(@RequestParam(defaultValue = "1") Integer pageNum) {
-        val example = Example.builder(Order.class)
-                .where(WeekendSqls.<Order>custom()
-                                .andEqualTo(Order::getPayStatus, OrderPayStatus.Paid.getCode())
-                        //.andEqualTo(Order::getBuyUid,currentUser().getUid())
-                )
-                .orderByDesc("id")
-                .build();
-
-        val page = PageHelper.startPage(pageNum, PAGE_SIZE).doSelectPage(() -> orderService.selectByExample(example));
-
-        return new ModelAndView("center/enterprise/order/comment", "page", page);
+        return page;
     }
 }
