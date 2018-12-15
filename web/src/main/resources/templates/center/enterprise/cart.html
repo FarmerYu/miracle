@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/center/layout(center_nav='我的购物车')">
+<div th:fragment="center-content">
+    <div class="cart cart-title">
+        <h4><input class="all" type="checkbox"></input></h4>
+        <h4>名称</h4>
+        <h4>组织</h4>
+        <h4>简介</h4>
+        <h4>地点</h4>
+        <h4>金额</h4>
+        <h4>截止时间</h4>
+    </div>
+    <div class="cart cooperative-item" th:each="group,iterStat:${map}">
+        <div class="cooperative-item-title">
+            <p class="cit-t"><input class="group" type="checkbox"/><span th:text="${group.key.name}">15241525225545221522</span></p>
+        </div>
+        <div class="cart-cooperative-item" th:each="cart,iterStat:${group.value}">
+            <div class="cooperative-item-con order-item-con" th:with="service=${cart.service},provider=${cart.service.provider}">
+                <p class="orderInfo-item6"><input type="checkbox" th:value="${cart.id}" th:attr="price=${service.price}"></input> </p>
+                <div class="cooperative-name itbottom">
+                    <div class="cooperative-item-img"><img th:src="${service.pictureUrl}" src="img/11.png"/></div>
+                    <p th:text="${service.title}">需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
+                </div>
+                <p class="orderInfo-item1" th:text="${provider.name}">雅思教育</p>
+                <p class="orderInfo-item2" th:text="${service.content}">
+                    需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
+                <p class="orderInfo-item3" th:text="${service.address}">昆明</p>
+                <p class="orderInfo-item4" th:text="${service.price}">6000</p>
+                <p class="orderInfo-item5" th:text="${#dates.format(service.endTime, 'yyyy.MM.dd')}">
+                    2017.11.11</p>
+            </div>
+        </div>
+    </div>
+    <div class="cart cart-title cart-bottom">
+        <h4><input class="all" type="checkbox">全选</input></h4>
+        <h4>已选商品 <span id="totalCount">11</span> 件</h4>
+        <h4>合计：<span id="totalPrice">10000</span></h4>
+        <h4><a id="buy" href="javascript:void(0)" >结 算</a></h4>
+    </div>
+    <script type="text/javascript">
+        $('.cart input[type=checkbox].all').click(function () {
+            var chks=$('.cart input[type=checkbox]');
+            chks.attr("checked", !$(this).attr("checked"));
+            calculate(chks)
+        })
+        $('.cart input[type=checkbox].group').click(function () {
+            var chks=$(this).parents('div.cart').children().find('input');
+            chks.attr("checked", !$(this).attr("checked"))
+            calculate(chks)
+        })
+        $('#buy').click(function () {
+            
+        })
+
+        function calculate(chks) {
+            var price=0;
+            chks.each(function () {
+                if($(this).attr('price'))
+                price+=parseFloat($(this).attr('price'));
+            })
+            $('#totalCount').text(chks.length);
+            $('#totalPrice').text(price.toFixed(2));
+        }
+    </script>
+</div>
+</html>

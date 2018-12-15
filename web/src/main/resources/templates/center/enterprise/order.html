@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/center/enterprise/order-layout">
+<div th:fragment="order-content">
+    <div th:if="${tg==0||tg==1||tg==2||tg==3||tg==4}"
+         class="order-title">
+        <h4>名称</h4>
+        <h4>组织</h4>
+        <h4>简介</h4>
+        <h4>地点</h4>
+        <h4>金额</h4>
+        <h4>截止时间</h4>
+        <h4>状态</h4>
+    </div>
+    <div th:replace="/common/pagination::page(${page.pageNum},${page.pageSize},${page.total})">
+        <div th:fragment="page-content">
+            <div class="cooperative-list" th:each="order,iterStat:${page}">
+                <div class="cooperative-item">
+                    <div class="cooperative-item-title">
+                            <span class="cit-t"
+                                  th:text="${(iterStat.index+1)+(page.pageNum-1)*page.pageSize+'.'}">1</span>
+                        <span class="cit-t" th:text="${#dates.format(order.addTime, 'yyyy.MM.dd')}">2017.10.9</span>
+                        <p class="cit-t">订单编号：<span th:text="${order.tradeNo}">15241525225545221522</span></p>
+                    </div>
+                    <div th:if="${tg==0||tg==1||tg==2||tg==3||tg==4}" class="cooperative-item-con order-item-con">
+                        <div class="cooperative-name itbottom">
+                            <div class="cooperative-item-img"><img th:src="${order.service.pictureUrl}" src="img/11.png"/></div>
+                            <p th:text="${order.service.title}">需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
+                        </div>
+                        <p class="orderInfo-item1" th:text="${order.seller.name}">雅思教育</p>
+                        <p class="orderInfo-item2" th:text="${order.service.content}">
+                            需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
+                        <p class="orderInfo-item3" th:text="${order.service.address}">昆明</p>
+                        <p class="orderInfo-item4" th:text="${order.price}">6000</p>
+                        <p class="orderInfo-item5" th:text="${#dates.format(order.service.endTime, 'yyyy.MM.dd')}">
+                            2017.11.11</p>
+                        <p th:if="${tg!=4}" class="orderInfo-item6"
+                           th:class="${order.payStatus.code==0? 'orderInfo-item6 waitPay':'orderInfo-item6'}"
+                           th:text="${order.payStatus.description}">已抢单</p>
+
+                        <p th:if="${tg==4}" class="orderInfo-item6"
+                           th:class="${order.comment==null? 'orderInfo-item6 waitPay':'orderInfo-item6'}"
+                           th:text="${order.comment==null?'待评价':'已评价'}">待评价</p>
+                    </div>
+
+                    <div th:if="${tg==5}" class="cooperative-item-con order-item-con">
+                        <div class="order-item-img"><img th:src="${order.service.pictureUrl}" src="img/11.png"/>
+                        </div>
+                        <div class="order-item-text">
+                            <p th:text="${order.service.title}">需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
+                            <span th:text="${order.comment}">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div th:if="${tg==6}" class="cooperative-item-con order-item-con">
+                        <div class="order-item-img"><img th:src="${order.service.pictureUrl}" src="img/11.png"/>
+                        </div>
+                        <div class="order-item-text">
+                            <p th:text="${order.service.title}">需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
+                            <span>发票状态:<i th:class="${order.invoiceStatus.code==0? 'wait':''}"
+                                          th:text="${order.invoiceStatus.description}">已开</i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>
