@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/center/layout(center_nav='交易记录')">
+<div th:fragment="center-content">
+    <div th:replace="/common/pagination::page(${page.pageNum},${page.pageSize},${page.total})">
+        <div th:fragment="page-content">
+            <p class="unread-item" th:each="msg:${page}"><i></i><span th:text="${msg.msg}"></span></p>
+        </div>
+    </div>
+</div>
+
+</html>

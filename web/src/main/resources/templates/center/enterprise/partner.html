@@ -40,8 +40,8 @@
                     </div>
                     <div class="cooperative-item-con">
                         <div class="cooperative-name itbottom">
-                            <div class="cooperative-item-img"><img th:src="${service.pictureUrl}"
-                                                                   src="img/11.png"/></div>
+                            <div class="cooperative-item-img"><img th:src="${('\\'+service.pictureUrl)}"
+                                                                   src="/img/11.png"/></div>
                             <p th:text="${service.title}">需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
                         </div>
                         <p class="cooperative-info itbottom" th:text="${partner.intro}">

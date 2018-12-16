@@ -18,7 +18,7 @@
             <div class="cooperative-item-con order-item-con" th:with="service=${cart.service},provider=${cart.service.provider}">
                 <p class="orderInfo-item6"><input type="checkbox" th:value="${cart.id}" th:attr="price=${service.price}"></input> </p>
                 <div class="cooperative-name itbottom">
-                    <div class="cooperative-item-img"><img th:src="${service.pictureUrl}" src="img/11.png"/></div>
+                    <div class="cooperative-item-img"><img th:src="${service.pictureUrl}" src="/img/11.png"/></div>
                     <p th:text="${service.title}">需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
                 </div>
                 <p class="orderInfo-item1" th:text="${provider.name}">雅思教育</p>
