@@ -20,7 +20,7 @@
                         </div>
                     </div>
 
-                    <div class="guzhu case-con clearfix" style="display: none;" >
+                    <div class="guzhu case-con clearfix hidden"  >
                         <div class="case-list" th:each="item,iterStat:${page}">
                             <div class="case-list-img">
                                 <img src="/img/11.png"/>
@@ -34,9 +34,9 @@
     </div>
     <script th:inline="javascript">
         $(function () {
-            var selectedMenuName = /*[[${#request.getParameter('t')}]]*/ 0;
-            $(".service-record .navBar p.navBar-selected").removeClass("navBar-selected");
-            $(".service-record .navBar p").eq(selectedMenuName).addClass("navBar-selected");
+            var selectedMenuName = /*[[${#conversions.convert(#request.getParameter('t'),'Integer')}]]*/ 0;
+            $(".service-record .navBar p").removeClass("navBar-selected").eq(selectedMenuName).addClass("navBar-selected");
+            $(".service-record .navBar-content div.case-con").addClass('hidden').eq(selectedMenuName).removeClass('hidden');
         })
     </script>
 </div>

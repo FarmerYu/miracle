@@ -18,12 +18,11 @@
         </div>
     </div>
     <script th:inline="javascript">
-        $(function () {
-            var selectedMenuName = /*[[${#request.getParameter('t')}]]*/ 0;
-            $(".order-status h4.staSelected").removeClass("staSelected");
-            $(".order-status h4").eq(selectedMenuName).addClass("staSelected");
-        })
-    </script>
+    $(function () {
+        var selectedMenuName = /*[[${#conversions.convert(#request.getParameter('t'),'Integer')}]]*/ 0;
+        $(".order-status h4").removeClass("staSelected").eq(selectedMenuName).addClass("staSelected");
+    })
+</script>
 </div>
 
 </html>
