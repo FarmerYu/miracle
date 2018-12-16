@@ -14,6 +14,7 @@ public abstract class Organization {
     private Integer uid;
     private User owner;
     private String name;
+    private String intro;
 
     protected abstract OrganizationType getOrganizationType();
 

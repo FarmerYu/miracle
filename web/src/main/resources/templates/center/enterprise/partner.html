@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="/center/layout(center_nav='合作的服务商')">
+<div th:fragment="center-content">
+    <div class="cooperative-employer">
+        <div class="certified-title">
+            <h4>名称</h4>
+            <h4>简介</h4>
+            <h4>服务商</h4>
+        </div>
+        <div class="cooperative-list">
+            <div class="cooperative-item">
+                <div class="cooperative-item-title">
+                    <span class="cit-t">1.</span>
+                    <span class="cit-t">2017.10.9</span>
+                    <p class="cit-t">订单编号：15241525225545221522</p>
+                </div>
+                <div class="cooperative-item-con">
+                    <div class="cooperative-name itbottom">
+                        <div class="cooperative-item-img"><img src="img/11.png"/></div>
+                        <p>需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
+                    </div>
+                    <p class="cooperative-info itbottom">
+                        全球超过10,000所机构认可雅思成绩，无论你想留学、移民、就业，还是检测英语水平；无论你想去英国、澳大利亚、新西兰、美国、瑞典、新加坡</p>
+                    <p class="itbottom">雅思教育</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="/common/pagination::page(${page.pageNum},${page.pageSize},${page.total})">
+        <div th:fragment="page-content">
+            <div class="cooperative-list" th:each="order,iterStat:${page}" >
+                <div class="cooperative-item" th:with="service=${order.service},partner=${order.seller}">
+                    <div class="cooperative-item-title">
+                        <span class="cit-t" th:text="${(iterStat.index+1)+(page.pageNum-1)*page.pageSize+'.'}">1</span>
+                        <span class="cit-t" th:text="${#dates.format(order.addTime, 'yyyy.MM.dd')}">2017.10.9</span>
+                        <p class="cit-t">订单编号：<span th:text="${order.tradeNo}">15241525225545221522</span></p>
+                    </div>
+                    <div class="cooperative-item-con">
+                        <div class="cooperative-name itbottom">
+                            <div class="cooperative-item-img"><img th:src="${service.pictureUrl}"
+                                                                   src="img/11.png"/></div>
+                            <p th:text="${service.title}">需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求需求名字需求名字需求</p>
+                        </div>
+                        <p class="cooperative-info itbottom" th:text="${partner.intro}">
+                            全球超过10,000所机构认可雅思成绩，无论你想留学、移民、就业，还是检测英语水平；无论你想去英国、澳大利亚、新西兰、美国、瑞典、新加坡</p>
+                        <p class=" itbottom" th:text="${partner.name}">雅思教育</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

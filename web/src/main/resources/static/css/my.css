@@ -47,7 +47,7 @@ img{width:100%;display:block;}
 .unread-item p{width:680px;overflow: hidden;white-space:nowrap;text-overflow:ellipsis; }
 /*合作的雇主*/
 .cooperative-employer .certified-title>h4:nth-child(1){width:380px;}
-.cooperative-employer .certified-title>h4:nth-child(2){width:300px;}
+.cooperative-employer .certified-title>h4:nth-child(2){width:321px;}
 .cooperative-employer .certified-title>h4:nth-child(3){width:238px;}
 .cooperative-item{display:block;border:1px solid #B2B2B2;font-size:12px;color:#626262;margin-bottom:20px;}
 .cooperative-item:hover{border:1px solid #B2B2B2;}
@@ -57,7 +57,7 @@ img{width:100%;display:block;}
 .cooperative-item-con>.itbottom{float:left;height:70px;}
 .cooperative-item-con>p{width:238px;text-align: center;line-height:70px;height: 70px; padding: 0 2px;}
 .cooperative-item-con>.cooperative-name{width:380px;}
-.cooperative-item-con>.cooperative-info{text-align:justify;width:300px;line-height:1.5;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3; overflow: hidden;}
+.cooperative-item-con>.cooperative-info{text-align:justify;width:320px;line-height:1.5;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3; overflow: hidden;}
 .cooperative-item-img{margin-left:30px;}
 .cooperative-name>p{width:150px;float:left;line-height:1.5;margin:15px 0 0 20px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2; overflow: hidden;}
 /*需求详情样式*/
@@ -175,7 +175,7 @@ img{width:100%;display:block;}
 .cart-bottom>h4:nth-child(1){width: 518px; text-align: left}
 .cart-bottom>h4:nth-child(2){width: 150px;}
 .cart-bottom>h4:nth-child(3){width: 150px;}
-.cart-bottom>h4:nth-child(4){width: 120px; background-color: #D7532E;e}
+.cart-bottom>h4:nth-child(4){width: 120px; background-color: #D7532E;}
 .cart-bottom>h4:nth-child(4)>a{color: white}
 .cart-bottom>h4:nth-child(1)>input{ margin: 0 10px 0 28px;}
 .cart input[type=checkbox]{-webkit-appearance:checkbox;}

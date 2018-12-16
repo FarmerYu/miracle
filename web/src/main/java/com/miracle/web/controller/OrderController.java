@@ -39,6 +39,19 @@ public class OrderController extends CenterController {
         return new ModelAndView("center/enterprise/order", "page", page);
     }
 
+
+    @RequestMapping("/partner")
+    public ModelAndView partner(@RequestParam(defaultValue = "1") int pageNum) {
+        val weekendSqls = WeekendSqlsProxy.<Order>custom()
+                .andEqualTo(Order::getBuyUid, currentUser().getUid())
+                .andEqualTo(Order::getPayStatus, OrderPayStatus.Paid)
+                .weekendSqls();
+
+        val page = doSelectPage(pageNum, weekendSqls);
+
+        return new ModelAndView("center/enterprise/partner", "page", page);
+    }
+
     private Page doSelectPage(Integer pageNum, WeekendSqls<Order> weekendSqls) {
         val example = Example.builder(Order.class)
                 .where(weekendSqls)
