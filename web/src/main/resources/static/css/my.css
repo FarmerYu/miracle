@@ -1,4 +1,4 @@
-.center-container{padding: 0px 20px;}
+.center-container{padding: 0px 0px;}
 
 .area{width:1200px;margin:0 auto;}
 *{box-sizing: border-box;letter-spacing: 1px;}
@@ -87,11 +87,11 @@ img{width:100%;display:block;}
 /*账号管理*/
 .accout-management{margin-top:20px;border:1px solid #B2B2B2;padding:50px 30px 120px;}
 .accout-management>h5{font-size:16px;color:#333;}
-.number{height:32px;width:520px;line-height: 32px;color:#626262;margin-bottom:16px;}
+.number{height:32px;line-height: 32px;color:#626262;margin-bottom:16px;}
 .number label{float:left;width:200px;text-align:right;}
 .number input{width:310px;padding-left:10px;border-radius:4px;border:1px solid #B2B2B2;line-height:30px;float:left;margin-left:10px;}
 .number .yzm{width:200px;}
-.number span{float:left;width:90px;height:30px;margin:1px 10px;background: #d7532e;color:#fff;line-height:30px;text-align:center;border-radius: 4px;}
+.number span.ucode{float:left;width:90px;height:30px;margin:1px 10px;background: #d7532e;color:#fff;line-height:30px;text-align:center;border-radius: 4px;}
 .btn{margin-left:210px;margin-top:40px;display:block;border:0;width:80px;height:30px;background: #d7532e;color:#fff;line-height:30px;text-align:center;border-radius: 4px;}
 .tixianBtn{float:left;width:70px;height:30px;margin:1px 10px;background: #d7532e;color:#fff;line-height:30px;text-align:center;border-radius: 4px;}
 /*限时促销*/
@@ -184,3 +184,5 @@ img{width:100%;display:block;}
 .navBar a:hover{text-decoration: none;}
 .service-record .navBar-content{border-top: 1px #eeeeee solid; padding-top: 15px;}
 .hidden{display: none}
+.error{
+    color: red;}

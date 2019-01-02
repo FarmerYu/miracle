@@ -18,7 +18,6 @@ public abstract class Organization {
 
     protected abstract OrganizationType getOrganizationType();
 
-    private List<OrganizationMember> members;
-
+    private List<OrgMember> members;
 
 }

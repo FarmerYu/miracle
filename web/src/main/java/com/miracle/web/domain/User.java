@@ -1,5 +1,6 @@
 package com.miracle.web.domain;
 
+import com.miracle.web.domain.value.OrganizationType;
 import lombok.Data;
 
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public class User {
 
     private String vcode;
 
-    private Byte utype;
+    private OrganizationType utype;
 
     private String loginIp;
 

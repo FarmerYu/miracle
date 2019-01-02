@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"  th:replace="/center/layout(center_nav='账户管理')">
+<div th:fragment="center-content">
+    <div class="accout-management">
+        <h5>修改密码</h5>
+        <form th:action="@{/account/pwd}" th:object="${dto}" method="post">
+            <div id="number" class="number">
+                <label name="tel">请输入手机号：</label>
+                <input class="tel" th:field="*{mobile}" type="text" maxlength="11">
+                <span th:if="${#fields.hasErrors('mobile')}" th:text="${#fields.errors('mobile')}" class="error"></span>
+            </div>
+            <div id="yzmBox" class="number">
+                <label name="yzm">请输入验证码：</label>
+                <input class="yzm" th:field="*{ucode}" type="text">
+                <span class="ucode">发送验证码</span>
+                <span th:if="${#fields.hasErrors('ucode')}" th:text="${#fields.errors('ucode')}" class="error"></span>
+            </div>
+            <div id="password_box" class="number">
+                <label name="tx">请输入新密码：</label>
+                <input th:field="*{upwd}" type="password">
+                <span th:if="${#fields.hasErrors('upwd')}" th:text="${#fields.errors('upwd')}" class="error"></span>
+            </div>
+            <div>
+                <input class="btn" type="submit" value="提交">
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+</html>

@@ -7,8 +7,8 @@
     <div th:if="${total>0}">
         <div class="page-container" th:include="::page-content"></div>
 
-        <ul class="pagination" id="pagination"></ul>
-        <script th:inline="javascript">
+        <ul th:if="${total>pageSize}" class="pagination" id="pagination"></ul>
+        <script th:if="${total>pageSize}" th:inline="javascript">
             $(function () {
                 $('#pagination').jqPaginator({
                     totalCounts: /*[[${total}]]*/ 100, //设置分页的总条目数

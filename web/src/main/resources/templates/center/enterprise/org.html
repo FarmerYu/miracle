@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/center/layout(center_nav='组织管理')">
+<div th:fragment="center-content">
+    <div class="service-record">
+        <div class="navBar">
+            <p class="navBar-selected" ><a th:href="@{/org/index?t=0&own=1}">我创建的</a></p>
+            <p ><a th:href="@{/org/index?t=1&own=0}">我加入的</a></p>
+        </div>
+        <div class="navBar-content">
+            <div th:replace="/common/pagination::page(${page.pageNum},${page.pageSize},${page.total})">
+                <div th:fragment="page-content">
+                    <div class="repuired case-con clearfix">
+                        <div class="case-list" th:each="item,iterStat:${page}">
+                            <div class="case-list-img">
+                                <img src="/img/11.png"/>
+                            </div>
+                            <p>需求名字</p>
+                            <p>预算：5000</p>
+                        </div>
+                    </div>
+
+                    <div class="guzhu case-con clearfix hidden"  >
+                        <div class="case-list" th:each="item,iterStat:${page}">
+                            <div class="case-list-img">
+                                <img src="/img/11.png"/>
+                            </div>
+                            <p>昆明理工篮球场地</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:inline="javascript">
+        $(function () {
+            var selectedMenuName = /*[[${#conversions.convert(#request.getParameter('t'),'Integer')}]]*/ 0;
+            $(".service-record .navBar p").removeClass("navBar-selected").eq(selectedMenuName).addClass("navBar-selected");
+            $(".service-record .navBar-content div.case-con").addClass('hidden').eq(selectedMenuName).removeClass('hidden');
+        })
+    </script>
+</div>
+
+</html>
